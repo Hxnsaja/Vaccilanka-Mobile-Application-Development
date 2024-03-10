@@ -166,3 +166,17 @@ class _UserInfoFormState extends State<UserInfoForm> {
                 fontStyle: FontStyle.italic,
                 color: Colors.grey[400],
               ),
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
+            ),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Please enter $title';
+              }
+              return null;
+            },
+          ),
+        ),
+      ],
+    );
+  }
