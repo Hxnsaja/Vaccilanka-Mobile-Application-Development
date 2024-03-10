@@ -22,3 +22,14 @@ class UserInfoForm extends StatefulWidget {
   @override
   _UserInfoFormState createState() => _UserInfoFormState();
 }
+
+class _UserInfoFormState extends State<UserInfoForm> {
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController _userIdController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _dobController = TextEditingController();
+  TextEditingController _addressController = TextEditingController();
+  TextEditingController _genderController = TextEditingController();
+  TextEditingController _nicController = TextEditingController();
+  TextEditingController _contactController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
