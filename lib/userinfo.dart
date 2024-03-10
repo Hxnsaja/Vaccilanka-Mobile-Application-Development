@@ -33,3 +33,11 @@ class _UserInfoFormState extends State<UserInfoForm> {
   TextEditingController _nicController = TextEditingController();
   TextEditingController _contactController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(40.0),
+        child: AppBar(
+          title: Text(
