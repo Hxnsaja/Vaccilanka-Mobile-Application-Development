@@ -61,7 +61,7 @@ class _UserInfoFormState extends State<UserInfoForm> {
                 width: 60, // Edited: Width of the image
                 height: 80, // Edited: Height of the image
                 child: Image.asset(
-                                   'assets/vaccilanka.png',
+                  'assets/vaccilanka.png',
                   fit: BoxFit.fitHeight,
                 ),
               ),
@@ -98,7 +98,7 @@ class _UserInfoFormState extends State<UserInfoForm> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(14.0),
                       ),
-                      ),
+                    ),
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20.0),
                       child: Text(
@@ -107,7 +107,7 @@ class _UserInfoFormState extends State<UserInfoForm> {
                           fontSize: 17.0,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
-                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -119,7 +119,7 @@ class _UserInfoFormState extends State<UserInfoForm> {
       ),
     );
   }
-  
+
   Widget _buildFieldWithTitle(String title, TextEditingController controller) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,7 +180,7 @@ class _UserInfoFormState extends State<UserInfoForm> {
       ],
     );
   }
-  
+
   Widget _buildShortFieldWithTitle(
       String title, TextEditingController controller) {
     return Column(
@@ -232,7 +232,7 @@ class _UserInfoFormState extends State<UserInfoForm> {
                       fontWeight: FontWeight.w600,
                       color: Colors.grey[400],
                     ),
-contentPadding:
+                    contentPadding:
                         EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
                   ),
                   validator: (value) {
@@ -272,7 +272,7 @@ contentPadding:
       ],
     );
   }
-  
+
   void _submitForm() {
     String userId = _userIdController.text;
     String name = _nameController.text;
@@ -292,3 +292,17 @@ contentPadding:
     print('Contact Number: $contact');
     print('Email: $email');
   }
+
+  @override
+  void dispose() {
+    _userIdController.dispose();
+    _nameController.dispose();
+    _dobController.dispose();
+    _addressController.dispose();
+    _genderController.dispose();
+    _nicController.dispose();
+    _contactController.dispose();
+    _emailController.dispose();
+    super.dispose();
+  }
+}
