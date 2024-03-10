@@ -61,3 +61,11 @@ class _UserInfoFormState extends State<UserInfoForm> {
                 width: 60, // Edited: Width of the image
                 height: 80, // Edited: Height of the image
                 child: Image.asset(
+                                   'assets/vaccilanka.png',
+                  fit: BoxFit.fitHeight,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
