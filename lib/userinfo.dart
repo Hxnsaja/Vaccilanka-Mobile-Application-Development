@@ -41,3 +41,16 @@ class _UserInfoFormState extends State<UserInfoForm> {
         preferredSize: Size.fromHeight(40.0),
         child: AppBar(
           title: Text(
+            'User Information',
+            style: TextStyle(
+              fontSize: 22.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+          backgroundColor: Color(0xFFEBF8F9),
+          centerTitle: true,
+          leading: new IconButton(
+            icon: new Icon(Icons.arrow_back_ios, color: Colors.black),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
