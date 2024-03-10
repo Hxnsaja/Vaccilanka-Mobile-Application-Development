@@ -272,3 +272,13 @@ contentPadding:
       ],
     );
   }
+  
+  void _submitForm() {
+    String userId = _userIdController.text;
+    String name = _nameController.text;
+    String dob = _dobController.text;
+    String address = _addressController.text;
+    String gender = _genderController.text;
+    String nic = _nicController.text;
+    String contact = _contactController.text;
+    String email = _emailController.text;
