@@ -144,3 +144,13 @@ class _UserInfoFormState extends State<UserInfoForm> {
               fontWeight: FontWeight.w600,
               color: Colors.grey[600], // Light grey color
             ),
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: BorderSide(
+                  color: Colors.blue, // Blue border color
+                  width: 1.0, // Small border weight
+                ),
+              ),
