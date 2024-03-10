@@ -69,3 +69,11 @@ class _UserInfoFormState extends State<UserInfoForm> {
           ],
         ),
       ),
+      body: Container(
+        color: Color(0xFFEBF8F9),
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Form(
+            key: _formKey,
+            child: ListView(
+              children: <Widget>[
