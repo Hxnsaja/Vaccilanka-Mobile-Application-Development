@@ -154,3 +154,15 @@ class _UserInfoFormState extends State<UserInfoForm> {
                   width: 1.0, // Small border weight
                 ),
               ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: BorderSide(
+                  color: Colors.blue,
+                  width: 1.0,
+                ),
+              ),
+              hintText: 'Enter $title',
+              hintStyle: TextStyle(
+                fontStyle: FontStyle.italic,
+                color: Colors.grey[400],
+              ),
