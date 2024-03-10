@@ -282,3 +282,13 @@ contentPadding:
     String nic = _nicController.text;
     String contact = _contactController.text;
     String email = _emailController.text;
+
+    print('User ID: $userId');
+    print('Name: $name');
+    print('Date of Birth: $dob');
+    print('Address: $address');
+    print('Gender: $gender');
+    print('NIC Number: $nic');
+    print('Contact Number: $contact');
+    print('Email: $email');
+  }
