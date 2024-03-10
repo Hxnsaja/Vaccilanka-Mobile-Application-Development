@@ -243,3 +243,14 @@ contentPadding:
                   },
                 ),
               ),
+              SizedBox(width: 10),
+              ElevatedButton(
+                onPressed: () {
+                  // Change button logic
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF94C5FF),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14.0),
+                  ),
+                ),
