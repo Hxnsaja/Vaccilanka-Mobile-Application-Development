@@ -135,3 +135,12 @@ class _UserInfoFormState extends State<UserInfoForm> {
             ),
           ),
         ),
+        Padding(
+          padding: EdgeInsets.only(bottom: 8.0),
+          child: TextFormField(
+            controller: controller,
+            style: TextStyle(
+              fontStyle: FontStyle.italic,
+              fontWeight: FontWeight.w600,
+              color: Colors.grey[600], // Light grey color
+            ),
