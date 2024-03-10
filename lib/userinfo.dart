@@ -85,3 +85,16 @@ class _UserInfoFormState extends State<UserInfoForm> {
                 _buildFieldWithTitle('NIC Number', _nicController),
                 _buildShortFieldWithTitle('Contact Number', _contactController),
                 _buildShortFieldWithTitle('Email', _emailController),
+                SizedBox(height: 20),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        _submitForm();
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.blue.shade100,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14.0),
+                      ),
