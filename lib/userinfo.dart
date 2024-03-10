@@ -54,3 +54,10 @@ class _UserInfoFormState extends State<UserInfoForm> {
             icon: new Icon(Icons.arrow_back_ios, color: Colors.black),
             onPressed: () => Navigator.of(context).pop(),
           ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: 60, // Edited: Width of the image
+                height: 80, // Edited: Height of the image
+                child: Image.asset(
