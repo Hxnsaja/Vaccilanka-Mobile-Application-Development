@@ -107,3 +107,15 @@ class _UserInfoFormState extends State<UserInfoForm> {
                           fontSize: 17.0,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
+                          ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
