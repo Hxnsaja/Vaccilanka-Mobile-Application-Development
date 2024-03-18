@@ -121,3 +121,9 @@ return Scaffold(
                   ), // Add name below image
                 ],
               ),
+              Column(
+                children: [
+                  DeveloperCard(
+                      imageUrl: 'assets/woman.png',
+                      size: 120), // Larger image size
+                  Text(
