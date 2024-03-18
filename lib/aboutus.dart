@@ -153,3 +153,12 @@ class DeveloperCard extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(8), // Add padding around the image
         child: Image.asset(
+          imageUrl,
+          fit: BoxFit.contain,
+          width: 120, // Use the specified size
+          height: 120, // Use the specified size
+        ),
+      ),
+    );
+  }
+}
