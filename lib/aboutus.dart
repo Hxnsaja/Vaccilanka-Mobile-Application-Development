@@ -29,3 +29,9 @@ return Scaffold(
         child: AppBar(
           title: Text(
             'About Us',
+            style: TextStyle(
+              fontSize: 22.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
