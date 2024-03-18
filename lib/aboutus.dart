@@ -61,3 +61,8 @@ return Scaffold(
         padding: EdgeInsets.all(16), // Add padding around the GridView
         child: Center(
           child: GridView.count(
+            shrinkWrap: true,
+            crossAxisCount: 2,
+            mainAxisSpacing: 16, // Increase the gap between images
+            crossAxisSpacing: 16, // Increase the gap between images
+            children: [
