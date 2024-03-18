@@ -10,3 +10,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'About Us Page',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: AboutUs(),
+    );
+  }
+}
