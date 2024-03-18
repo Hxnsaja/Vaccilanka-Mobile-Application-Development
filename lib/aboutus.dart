@@ -139,3 +139,9 @@ class AboutUs extends StatelessWidget {
     );
   }
 }
+
+class DeveloperCard extends StatelessWidget {
+  final String imageUrl;
+  final double size;
+
+  const DeveloperCard({required this.imageUrl, this.size = 100});
