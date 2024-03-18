@@ -66,3 +66,14 @@ return Scaffold(
             mainAxisSpacing: 16, // Increase the gap between images
             crossAxisSpacing: 16, // Increase the gap between images
             children: [
+              Column(
+                children: [
+                  DeveloperCard(
+                      imageUrl: 'assets/man.png',
+                      size: 120), // Larger image size
+                  Text(
+                    'Pulindu Hettiarachchi',
+                    style: TextStyle(fontWeight: FontWeight.bold), // Bold text
+                  ), // Add name below image
+                ],
+              ),
