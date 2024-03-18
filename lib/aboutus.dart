@@ -23,7 +23,7 @@ class AboutUs extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-return Scaffold(
+    return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40.0),
         child: AppBar(
@@ -35,7 +35,7 @@ return Scaffold(
               color: Colors.black,
             ),
           ),
-           backgroundColor: Color(0xFFEBF8F9),
+          backgroundColor: Color(0xFFEBF8F9),
           centerTitle: true,
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios, color: Colors.black),
@@ -127,3 +127,15 @@ return Scaffold(
                       imageUrl: 'assets/woman.png',
                       size: 120), // Larger image size
                   Text(
+                    'Tashini Udeshika',
+                    style: TextStyle(fontWeight: FontWeight.bold), // Bold text
+                  ), // Add name below image
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
