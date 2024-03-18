@@ -22,3 +22,10 @@ class AboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+
+return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(40.0),
+        child: AppBar(
+          title: Text(
+            'About Us',
