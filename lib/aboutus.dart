@@ -116,3 +116,8 @@ return Scaffold(
                       imageUrl: 'assets/woman.png',
                       size: 120), // Larger image size
                   Text(
+                    'Bhagya Gunaratne',
+                    style: TextStyle(fontWeight: FontWeight.bold), // Bold text
+                  ), // Add name below image
+                ],
+              ),
