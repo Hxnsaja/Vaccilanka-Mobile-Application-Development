@@ -99,3 +99,9 @@ return Scaffold(
                   ), // Add name below image
                 ],
               ),
+              Column(
+                children: [
+                  DeveloperCard(
+                      imageUrl: 'assets/man.png',
+                      size: 120), // Larger image size
+                  Text(
