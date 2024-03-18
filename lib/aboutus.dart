@@ -47,3 +47,12 @@ return Scaffold(
               child: SizedBox(
                 width: 60,
                 height: 80,
+                child: Image.asset(
+                  'assets/logo1.png',
+                  fit: BoxFit.fitHeight,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
