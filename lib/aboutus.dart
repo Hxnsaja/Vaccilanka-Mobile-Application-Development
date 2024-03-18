@@ -35,3 +35,9 @@ return Scaffold(
               color: Colors.black,
             ),
           ),
+           backgroundColor: Color(0xFFEBF8F9),
+          centerTitle: true,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
