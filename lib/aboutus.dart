@@ -145,3 +145,11 @@ class DeveloperCard extends StatelessWidget {
   final double size;
 
   const DeveloperCard({required this.imageUrl, this.size = 100});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4,
+      child: Padding(
+        padding: EdgeInsets.all(8), // Add padding around the image
+        child: Image.asset(
