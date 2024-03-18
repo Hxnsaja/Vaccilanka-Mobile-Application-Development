@@ -105,3 +105,8 @@ return Scaffold(
                       imageUrl: 'assets/man.png',
                       size: 120), // Larger image size
                   Text(
+                    'Sandun Sahiru',
+                    style: TextStyle(fontWeight: FontWeight.bold), // Bold text
+                  ), // Add name below image
+                ],
+              ),
