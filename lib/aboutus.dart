@@ -56,3 +56,8 @@ return Scaffold(
           ],
         ),
       ),
+      body: Container(
+        color: Color(0xFFEBF8F9),
+        padding: EdgeInsets.all(16), // Add padding around the GridView
+        child: Center(
+          child: GridView.count(
