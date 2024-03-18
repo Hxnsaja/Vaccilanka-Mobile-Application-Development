@@ -17,3 +17,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+class AboutUs extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
