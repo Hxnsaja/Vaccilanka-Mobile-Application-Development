@@ -94,7 +94,7 @@ class _UserInfoFormState extends State<UserInfoForm> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.blue.shade100,
+                      backgroundColor: Colors.blue.shade100,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(14.0),
                       ),
@@ -249,7 +249,7 @@ class _UserInfoFormState extends State<UserInfoForm> {
                   // Change button logic
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF94C5FF),
+                  backgroundColor: Color(0xFF94C5FF),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14.0),
                   ),
