@@ -34,3 +34,23 @@ class _PasswordAndSecurityState extends State<PasswordAndSecurity> {
       });
       return;
     }
+    
+    final String? userId = SessionManager().userId;
+    if (userId == null) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("User not found")));
+      setState(() {
+        _isProcessing = false;
+      });
+      return;
+    }
+
+    User? user = _auth.currentUser;
+    if (user == null) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Not authenticated")));
+      setState(() {
+        _isProcessing = false;
+      });
+      return;
+    }
+
+    
