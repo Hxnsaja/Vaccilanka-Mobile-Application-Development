@@ -47,22 +47,11 @@ class _SettingsPageState extends State<SettingsPage> {
               // Navigate to Password Manager page
             },
           ),
-          _buildSettingsItem(
-            title: 'Notifications',
-            onTap: () {
-              // Navigate to Notifications page
-            },
-          ),
+          
           _buildSettingsItem(
             title: 'Security and Privacy',
             onTap: () {
               // Navigate to Security and Privacy page
-            },
-          ),
-          _buildSettingsItem(
-            title: 'Theme',
-            onTap: () {
-              // Navigate to Theme page
             },
           ),
           _buildSettingsItem(
