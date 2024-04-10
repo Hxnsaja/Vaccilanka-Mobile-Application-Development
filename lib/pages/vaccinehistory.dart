@@ -12,53 +12,66 @@ class VaccineHistoryPage extends StatefulWidget {
 
 class _VaccineHistoryPageState extends State<VaccineHistoryPage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  late String uid;
+  String? uid; // Changed from 'late' to nullable
   late Future<List<VaccinationRecord>> vaccinationRecords;
 
   @override
   void initState() {
     super.initState();
-    uid = SessionManager().getUserId();
-    vaccinationRecords = getVaccinationRecords();
+    initVaccineHistory();
   }
 
-  Future<List<VaccinationRecord>> getVaccinationRecords() async {
-    var vaccineInfoSnapshot = await _firestore
-        .collection('vaccine_info')
-        .where('uid', isEqualTo: uid)
-        .get();
+  void initVaccineHistory() {
+    SessionManager sessionManager = SessionManager();
+    uid = sessionManager.userId; // Ensuring uid is nullable to handle the case where it may not be set
 
-    List<VaccinationRecord> records = [];
-
-    for (var vaccineInfoDoc in vaccineInfoSnapshot.docs) {
-      var data = vaccineInfoDoc.data();
-
-      // Retrieve the hospital name
-      var hospitalSnapshot = await _firestore
-          .collection('hospital')
-          .where('hospital_id', isEqualTo: data['hospital_id'])
-          .limit(1)
-          .get();
-      var hospitalName = hospitalSnapshot.docs.first.data()['name'];
-
-      // Retrieve the vaccine name
-      var vaccineSnapshot = await _firestore
-          .collection('vaccine')
-          .where('vaccine_id', isEqualTo: data['vaccine_id'])
-          .limit(1)
-          .get();
-      var vaccineName = vaccineSnapshot.docs.first.data()['name'];
-
-      records.add(
-        VaccinationRecord(
-          date: data['date'],
-          hospitalName: hospitalName,
-          vaccineName: vaccineName,
-        ),
-      );
+    if (uid == null) {
+      debugPrint('Error: User ID is null, ensure the user is logged in.');
+      // Navigate the user to the login page or show an error
+    } else {
+      debugPrint('User ID: $uid');
+      vaccinationRecords = getVaccinationRecords(uid!);
     }
+  }
 
-    return records;
+  Future<List<VaccinationRecord>> getVaccinationRecords(String uid) async {
+    try {
+      var vaccineInfoSnapshot = await _firestore
+          .collection('vaccine_info')
+          .where('uid', isEqualTo: uid)
+          .get();
+      debugPrint('Found ${vaccineInfoSnapshot.docs.length} vaccination records for User ID: $uid');
+
+      List<VaccinationRecord> records = [];
+      for (var vaccineInfoDoc in vaccineInfoSnapshot.docs) {
+        var data = vaccineInfoDoc.data();
+        var hospitalSnapshot = await _firestore
+            .collection('hospital')
+            .where('hospital_id', isEqualTo: data['hospital_id'])
+            .limit(1)
+            .get();
+        var hospitalName = hospitalSnapshot.docs.first.data()['name'];
+
+        var vaccineSnapshot = await _firestore
+            .collection('vaccine')
+            .where('vaccine_id', isEqualTo: data['vaccine_id'])
+            .limit(1)
+            .get();
+        var vaccineName = vaccineSnapshot.docs.first.data()['name'];
+
+        records.add(
+          VaccinationRecord(
+            date: data['date'],
+            hospitalName: hospitalName,
+            vaccineName: vaccineName,
+          ),
+        );
+      }
+      return records;
+    } catch (e) {
+      debugPrint('Error retrieving vaccination records: $e');
+      throw 'Error retrieving vaccination records';
+    }
   }
 
   @override
@@ -76,6 +89,7 @@ class _VaccineHistoryPageState extends State<VaccineHistoryPage> {
             return Text('Error: ${snapshot.error}');
           } else if (snapshot.hasData) {
             return SingleChildScrollView(
+              scrollDirection: Axis.horizontal, // Make the DataTable scrollable horizontally
               child: DataTable(
                 columns: const <DataColumn>[
                   DataColumn(label: Text('Date')),
@@ -85,11 +99,11 @@ class _VaccineHistoryPageState extends State<VaccineHistoryPage> {
                 rows: snapshot.data!
                     .map(
                       (record) => DataRow(cells: [
-                        DataCell(Text(record.date)),
-                        DataCell(Text(record.hospitalName)),
-                        DataCell(Text(record.vaccineName)),
-                      ]),
-                    )
+                    DataCell(Text(record.date)),
+                    DataCell(Text(record.hospitalName)),
+                    DataCell(Text(record.vaccineName)),
+                  ]),
+                )
                     .toList(),
               ),
             );
