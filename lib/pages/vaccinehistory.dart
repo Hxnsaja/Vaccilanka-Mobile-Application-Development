@@ -66,4 +66,30 @@ class _VaccineHistoryPageState extends State<VaccineHistoryPage> {
       appBar: AppBar(
         title: Text('Vaccination History'),
       ),
+  body: FutureBuilder<List<VaccinationRecord>>(
+        future: vaccinationRecords,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator(); 
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else if (snapshot.hasData) {
+            return SingleChildScrollView(
+              child: DataTable(
+                columns: const <DataColumn>[
+                  DataColumn(label: Text('Date')),
+                  DataColumn(label: Text('Hospital Name')),
+                  DataColumn(label: Text('Vaccine Name')),
+                ],
+                rows: snapshot.data!
+                    .map(
+                      (record) => DataRow(cells: [
+                        DataCell(Text(record.date)),
+                        DataCell(Text(record.hospitalName)),
+                        DataCell(Text(record.vaccineName)),
+                      ]),
+                    )
+                    .toList(),
+              ),
+            );
 
