@@ -53,4 +53,18 @@ class _PasswordAndSecurityState extends State<PasswordAndSecurity> {
       return;
     }
 
-    
+     String email = user.email!;
+    try {
+      AuthCredential credential = EmailAuthProvider.credential(email: email, password: currentPassword);
+      await user.reauthenticateWithCredential(credential);
+      await user.updatePassword(newPassword);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Password successfully updated")));
+    } on FirebaseAuthException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("An error occurred: ${e.message}")));
+    } finally {
+      setState(() {
+        _isProcessing = false;
+      });
+    }
+  }
+
