@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "953721955947",
+    "project_id": "vaccilanka",
+    "storage_bucket": "vaccilanka.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953721955947:android:4aaa6a15c35f5b4c21332e",
+        "android_client_info": {
+          "package_name": "com.example.vaccilanka_mobile_application_development"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLyH8N1VF4EEnNeFAugnKawY7BytL7fSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

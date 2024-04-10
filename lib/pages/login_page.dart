@@ -1,8 +1,55 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:vaccilanka_mobile_application_development/pages/home.dart';
+import 'package:vaccilanka_mobile_application_development/pages/services/session_manager.dart';
+import 'package:vaccilanka_mobile_application_development/utils/custom_snack.dart';
+import 'package:vaccilanka_mobile_application_development/utils/loading_animation.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future<void> login(BuildContext context) async {
+    final String username = _usernameController.text.trim();
+    final String password = _passwordController.text.trim();
+
+    if (username.isEmpty || password.isEmpty) {
+      CustomSnackbar.showWarning(context, 'Please fill in all fields');
+      return;
+    }
+
+    try {
+      showLoadingAnimation(context);
+
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: username,
+        password: password,
+      );
+      if (userCredential.user != null) {
+
+        SessionManager().setUserId(userCredential.user!.uid);
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
+        );
+      } else {
+        CustomSnackbar.showWarning(context, 'No user found for the provided credentials');
+      }
+    } on FirebaseAuthException catch (e) {
+      CustomSnackbar.showWarning(context, e.message ?? 'An error occurred');
+    } finally {
+      closeLoadingAnimation(context);
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +67,6 @@ class LoginPage extends StatelessWidget {
               width: 100,
             ),
             const SizedBox(height: 20),
-//App name
             const Text(
               'VACCILANKA',
               style: TextStyle(
@@ -31,7 +77,6 @@ class LoginPage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
-            //Uselogin text
             const Text(
               'User Login',
               style: TextStyle(
@@ -41,27 +86,26 @@ class LoginPage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
-            //usename textbox
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              controller: _usernameController,
+              decoration: const InputDecoration(
                 labelText: 'User Name',
                 border: OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 10),
-            //password text box
-            const TextField(
+            TextField(
+              controller: _passwordController,
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Password',
                 border: OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 10),
-            //forgot password link
             GestureDetector(
               onTap: () {
-                //handle
+
               },
               child: const Text(
                 'Forgot Password?',
@@ -72,13 +116,9 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            //login button
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
-                );
+                login(context);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 148, 186, 218),

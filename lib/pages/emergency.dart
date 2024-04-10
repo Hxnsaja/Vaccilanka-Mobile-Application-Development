@@ -22,7 +22,7 @@ class EmergencyContactsPage extends StatelessWidget {
       backgroundColor: backgroundColor,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView( // Changed to ListView to accommodate longer content
+        child: ListView(
           children: [
             EmergencyContactCard(
               title: 'Colombo General Hospital',
@@ -39,11 +39,11 @@ class EmergencyContactsPage extends StatelessWidget {
               address: 'Address: Hospital Rd, Homagama 10200',
               otherInfo: 'Hours: Open 24 hours\nPhone: 0112 855 200',
             ),
-            // Add more EmergencyContactCards if needed
+
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigation(selectedIndex: 2), // Assuming index 2 is for the Emergency page
+      bottomNavigationBar: BottomNavigation(selectedIndex: 2),
     );
   }
 }
