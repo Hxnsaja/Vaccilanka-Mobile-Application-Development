@@ -29,3 +29,21 @@ class _VaccineHistoryPageState extends State<VaccineHistoryPage> {
         .get();
 
     List<VaccinationRecord> records = [];
+ for (var vaccineInfoDoc in vaccineInfoSnapshot.docs) {
+      var data = vaccineInfoDoc.data();
+
+      // Retrieve the hospital name
+      var hospitalSnapshot = await _firestore
+          .collection('hospital')
+          .where('hospital_id', isEqualTo: data['hospital_id'])
+          .limit(1)
+          .get();
+      var hospitalName = hospitalSnapshot.docs.first.data()['name'];
+
+      // Retrieve the vaccine name
+      var vaccineSnapshot = await _firestore
+          .collection('vaccine')
+          .where('vaccine_id', isEqualTo: data['vaccine_id'])
+          .limit(1)
+          .get();
+      var vaccineName = vaccineSnapshot.docs.first.data()['name'];
