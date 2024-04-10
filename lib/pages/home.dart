@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vaccilanka_mobile_application_development/pages/aboutus.dart';
 import 'package:vaccilanka_mobile_application_development/pages/contactus_page.dart';
 import 'package:vaccilanka_mobile_application_development/pages/userinfo.dart';
-import 'updates.dart';
+import 'package:vaccilanka_mobile_application_development/pages/updates.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
-            icon: Image.asset('path_to_your_user_icon_asset'),
+            icon: Image.asset('assets/man.png'),
             onPressed: () {
 
             },
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatesPage()));
               },
-              child: Image.asset('path_to_your_first_news_image_asset'),
+              child: Image.asset('assets/teen-vaccines.jpg'),
             ),
             GridView.count(
               shrinkWrap: true,
@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisSpacing: 4.0,
               children: <Widget>[
                 _buildCategoryButton(
-                  iconPath: 'path_to_your_user_info_image',
+                  iconPath: 'assets/info.jpg',
                   label: 'User Information',
                   onTap: () {
 
