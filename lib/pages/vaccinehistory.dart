@@ -29,7 +29,8 @@ class _VaccineHistoryPageState extends State<VaccineHistoryPage> {
         .get();
 
     List<VaccinationRecord> records = [];
- for (var vaccineInfoDoc in vaccineInfoSnapshot.docs) {
+
+    for (var vaccineInfoDoc in vaccineInfoSnapshot.docs) {
       var data = vaccineInfoDoc.data();
 
       // Retrieve the hospital name
@@ -48,7 +49,7 @@ class _VaccineHistoryPageState extends State<VaccineHistoryPage> {
           .get();
       var vaccineName = vaccineSnapshot.docs.first.data()['name'];
 
-       records.add(
+      records.add(
         VaccinationRecord(
           date: data['date'],
           hospitalName: hospitalName,
@@ -66,11 +67,11 @@ class _VaccineHistoryPageState extends State<VaccineHistoryPage> {
       appBar: AppBar(
         title: Text('Vaccination History'),
       ),
-  body: FutureBuilder<List<VaccinationRecord>>(
+      body: FutureBuilder<List<VaccinationRecord>>(
         future: vaccinationRecords,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator(); 
+            return CircularProgressIndicator();
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else if (snapshot.hasData) {
@@ -92,7 +93,7 @@ class _VaccineHistoryPageState extends State<VaccineHistoryPage> {
                     .toList(),
               ),
             );
-             } else {
+          } else {
             return Text('No records found.');
           }
         },
@@ -111,6 +112,5 @@ class VaccinationRecord {
     required this.date,
     required this.hospitalName,
     required this.vaccineName,
-  });
+  });
 }
-
