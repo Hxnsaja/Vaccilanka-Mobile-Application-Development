@@ -15,7 +15,7 @@ class LoginPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Image.asset(
-              "assets/Image1.jpg",
+              "assets/logo.png",
               height: 100,
               width: 100,
             ),

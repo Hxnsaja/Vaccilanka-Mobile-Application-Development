@@ -1,28 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:vaccilanka_mobile_application_development/pages/home.dart';
+import 'package:vaccilanka_mobile_application_development/pages/contactus_page.dart';
+import 'package:vaccilanka_mobile_application_development/pages/userinfo.dart';
 
-void main() {
-  runApp(MyApp());
+
+
+class AboutUs extends StatefulWidget {
+  @override
+  _AboutUsState createState() => _AboutUsState();
 }
 
-class MyApp extends StatelessWidget {
+class _AboutUsState extends State<AboutUs> {
+  int _selectedIndex = 1;
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'About Us Page',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: AboutUs(),
-    );
-  }
-}
-
-class AboutUs extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40.0),
@@ -58,88 +50,126 @@ class AboutUs extends StatelessWidget {
       ),
       body: Container(
         color: Color(0xFFEBF8F9),
-        padding: EdgeInsets.all(16), // Add padding around the GridView
+        padding: EdgeInsets.all(16),
         child: Center(
           child: GridView.count(
             shrinkWrap: true,
             crossAxisCount: 2,
-            mainAxisSpacing: 16, // Increase the gap between images
-            crossAxisSpacing: 16, // Increase the gap between images
+            mainAxisSpacing: 16,
+            crossAxisSpacing: 16,
             children: [
               Column(
                 children: [
                   DeveloperCard(
                       imageUrl: 'assets/man.png',
-                      size: 120), // Larger image size
+                      size: 120),
                   Text(
                     'Pulindu Hettiarachchi',
-                    style: TextStyle(fontWeight: FontWeight.bold), // Bold text
-                  ), // Add name below image
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
               Column(
                 children: [
                   DeveloperCard(
                       imageUrl: 'assets/woman.png',
-                      size: 120), // Larger image size
+                      size: 120),
                   Text(
                     'Nethmi Melisha',
-                    style: TextStyle(fontWeight: FontWeight.bold), // Bold text
-                  ), // Add name below image
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
               Column(
                 children: [
                   DeveloperCard(
                       imageUrl: 'assets/woman.png',
-                      size: 120), // Larger image size
+                      size: 120),
                   Text(
                     'Kavindya Amarasinghe',
-                    style: TextStyle(fontWeight: FontWeight.bold), // Bold text
-                  ), // Add name below image
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
               Column(
                 children: [
                   DeveloperCard(
                       imageUrl: 'assets/man.png',
-                      size: 120), // Larger image size
+                      size: 120),
                   Text(
                     'Sandun Sahiru',
-                    style: TextStyle(fontWeight: FontWeight.bold), // Bold text
-                  ), // Add name below image
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
               Column(
                 children: [
                   DeveloperCard(
                       imageUrl: 'assets/woman.png',
-                      size: 120), // Larger image size
+                      size: 120),
                   Text(
                     'Bhagya Gunaratne',
-                    style: TextStyle(fontWeight: FontWeight.bold), // Bold text
-                  ), // Add name below image
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
               Column(
                 children: [
                   DeveloperCard(
                       imageUrl: 'assets/woman.png',
-                      size: 120), // Larger image size
+                      size: 120),
                   Text(
                     'Tashini Udeshika',
-                    style: TextStyle(fontWeight: FontWeight.bold), // Bold text
-                  ), // Add name below image
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              icon: Icon(Icons.home, color: _selectedIndex == 0 ? Colors.blueAccent : Colors.grey),
+              onPressed: () {
+                setState(() => _selectedIndex = 0);
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                      (Route<dynamic> route) => false,
+                );
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.info_outline, color: _selectedIndex == 1 ? Colors.blueAccent : Colors.grey),
+              onPressed: () {
+
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.phone, color: _selectedIndex == 2 ? Colors.blueAccent : Colors.grey),
+              onPressed: () {
+                setState(() => _selectedIndex = 2);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ContactUsPage()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.person, color: _selectedIndex == 3 ? Colors.blueAccent : Colors.grey),
+              onPressed: () {
+                setState(() => _selectedIndex = 3);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => UserInfoForm()));
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
-
 class DeveloperCard extends StatelessWidget {
   final String imageUrl;
   final double size;
