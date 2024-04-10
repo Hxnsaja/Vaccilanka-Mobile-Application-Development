@@ -10,13 +10,15 @@ class PasswordAndSecurity extends StatefulWidget {
 }
 
 class _PasswordAndSecurityState extends State<PasswordAndSecurity> {
-  final TextEditingController _currentPasswordController = TextEditingController();
+  final TextEditingController _currentPasswordController =
+      TextEditingController();
   final TextEditingController _newPasswordController = TextEditingController();
-  final TextEditingController _retypeNewPasswordController = TextEditingController();
+  final TextEditingController _retypeNewPasswordController =
+      TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   bool _isProcessing = false;
 
- Future<void> _changePassword() async {
+  Future<void> _changePassword() async {
     if (_isProcessing) return;
 
     setState(() {
@@ -28,16 +30,18 @@ class _PasswordAndSecurityState extends State<PasswordAndSecurity> {
     String retypeNewPassword = _retypeNewPasswordController.text.trim();
 
     if (newPassword != retypeNewPassword) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("New passwords do not match")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("New passwords do not match")));
       setState(() {
         _isProcessing = false;
       });
       return;
     }
-    
+
     final String? userId = SessionManager().userId;
     if (userId == null) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("User not found")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("User not found")));
       setState(() {
         _isProcessing = false;
       });
@@ -46,21 +50,25 @@ class _PasswordAndSecurityState extends State<PasswordAndSecurity> {
 
     User? user = _auth.currentUser;
     if (user == null) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Not authenticated")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Not authenticated")));
       setState(() {
         _isProcessing = false;
       });
       return;
     }
 
-     String email = user.email!;
+    String email = user.email!;
     try {
-      AuthCredential credential = EmailAuthProvider.credential(email: email, password: currentPassword);
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: currentPassword);
       await user.reauthenticateWithCredential(credential);
       await user.updatePassword(newPassword);
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Password successfully updated")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Password successfully updated")));
     } on FirebaseAuthException catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("An error occurred: ${e.message}")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("An error occurred: ${e.message}")));
     } finally {
       setState(() {
         _isProcessing = false;
@@ -68,39 +76,42 @@ class _PasswordAndSecurityState extends State<PasswordAndSecurity> {
     }
   }
 
-@override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: Text('Password & Security'),
-        backgroundColor: Colors.blue, 
+        backgroundColor: Colors.blue,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white), 
+          icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Color(0xFFEBF8F9), 
+          color: Color(0xFFEBF8F9),
           padding: EdgeInsets.all(16.0),
           child: Column(
             children: [
-              _buildPasswordField(_currentPasswordController, 'Current Password'),
+              _buildPasswordField(
+                  _currentPasswordController, 'Current Password'),
               SizedBox(height: 10),
               _buildPasswordField(_newPasswordController, 'New Password'),
               SizedBox(height: 10),
-              _buildPasswordField(_retypeNewPasswordController, 'Re-type New Password'),
+              _buildPasswordField(
+                  _retypeNewPasswordController, 'Re-type New Password'),
               SizedBox(height: 20),
               _isProcessing
                   ? CircularProgressIndicator()
                   : ElevatedButton(
                       onPressed: _changePassword,
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.lightBlueAccent, 
+                        primary: Colors.lightBlueAccent,
                       ),
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 16.0, vertical: 10.0),
                         child: Text('Change Password'),
                       ),
                     ),
@@ -117,7 +128,7 @@ class _PasswordAndSecurityState extends State<PasswordAndSecurity> {
       controller: controller,
       decoration: InputDecoration(
         labelText: label,
-        fillColor: Colors.white, 
+        fillColor: Colors.white,
         filled: true,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
@@ -125,6 +136,6 @@ class _PasswordAndSecurityState extends State<PasswordAndSecurity> {
         ),
       ),
       obscureText: true,
-    );
-  }
+    );
+  }
 }
