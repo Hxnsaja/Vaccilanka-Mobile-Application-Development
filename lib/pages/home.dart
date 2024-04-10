@@ -3,7 +3,8 @@ import 'package:vaccilanka_mobile_application_development/pages/aboutus.dart';
 import 'package:vaccilanka_mobile_application_development/pages/contactus_page.dart';
 import 'package:vaccilanka_mobile_application_development/pages/userinfo.dart';
 import 'package:vaccilanka_mobile_application_development/pages/updates.dart';
-
+// import 'package:vaccilanka_mobile_application_development/pages/account_page.dart';
+// import 'package:vaccilanka_mobile_application_development/pages/settings_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,43 +16,17 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
-    Widget page;
-    switch (index) {
-      case 0:
-        page =  HomePage();
-        break;
-      case 1:
-        page =  AboutUs();
-        break;
-      case 2:
-        page =  ContactUsPage();
-        break;
-      case 3:
-        page = UserInfoForm();
-        break;
-      default:
-        return;
-    }
-
-    if (index != _selectedIndex) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => page),
-      );
-    }
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Welcome Back, Ann'),
+        title: Row(
+          children: [
+            Image.asset('assets/logo.png', fit: BoxFit.cover, height: 30),
+            const SizedBox(width: 8),
+            const Text('Welcome Back, Ann'),
+          ],
+        ),
         backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
@@ -65,15 +40,27 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatesPage()));
-              },
-              child: Image.asset('assets/teen-vaccines.jpg'),
+            Card(
+              child: Stack(
+                alignment: Alignment.bottomLeft,
+                children: [
+                  Image.asset('assets/teen-vaccines.jpg'),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Latest News',
+                      style: TextStyle(
+                        backgroundColor: Colors.black.withOpacity(0.5),
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             GridView.count(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               crossAxisCount: 2,
               childAspectRatio: 1.0,
               padding: const EdgeInsets.all(4.0),
@@ -83,58 +70,67 @@ class _HomePageState extends State<HomePage> {
                 _buildCategoryButton(
                   iconPath: 'assets/info.jpg',
                   label: 'User Information',
-                  onTap: () {
-
-                  },
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) =>  UserInfoForm())),
                 ),
                 _buildCategoryButton(
-                  iconPath: 'path_to_your_vaccination_history_image',
+                  iconPath: 'assets/history.jpg',
                   label: 'Vaccination History',
-                  onTap: () {
-
-                  },
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) =>  UpdatesPage())),
                 ),
                 _buildCategoryButton(
-                  iconPath: 'path_to_your_vaccine_updates_image',
+                  iconPath: 'assets/updates.jpg',
                   label: 'Vaccine Updates',
-                  onTap: () {
-
-                  },
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) =>  UpdatesPage())),
                 ),
                 _buildCategoryButton(
-                  iconPath: 'path_to_your_educational_resources_image',
+                  iconPath: 'assets/resources.jpg',
                   label: 'Educational Resources',
-                  onTap: () {
-
-                  },
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) =>  UpdatesPage())),
                 ),
               ],
             ),
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.warning),
-            label: 'Emergency',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Account',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blueAccent,
-        onTap: _onItemTapped,
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              icon: Icon(Icons.home, color: _selectedIndex == 0 ? Colors.blueAccent : Colors.grey),
+              onPressed: () {
+                setState(() { _selectedIndex = 0; });
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomePage()),
+                      (Route<dynamic> route) => false,
+                );
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.info_outline, color: _selectedIndex == 1 ? Colors.blueAccent : Colors.grey),
+              onPressed: () {
+                setState(() { _selectedIndex = 1; });
+                Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUs()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.phone, color: _selectedIndex == 2 ? Colors.blueAccent : Colors.grey),
+              onPressed: () {
+                setState(() { _selectedIndex = 2; });
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ContactUsPage()));
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.person, color: _selectedIndex == 3 ? Colors.blueAccent : Colors.grey),
+              onPressed: () {
+                setState(() { _selectedIndex = 3; });
+                Navigator.push(context, MaterialPageRoute(builder: (context) => UserInfoForm()));
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
