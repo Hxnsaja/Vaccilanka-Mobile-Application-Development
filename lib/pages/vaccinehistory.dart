@@ -47,3 +47,23 @@ class _VaccineHistoryPageState extends State<VaccineHistoryPage> {
           .limit(1)
           .get();
       var vaccineName = vaccineSnapshot.docs.first.data()['name'];
+
+       records.add(
+        VaccinationRecord(
+          date: data['date'],
+          hospitalName: hospitalName,
+          vaccineName: vaccineName,
+        ),
+      );
+    }
+
+    return records;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Vaccination History'),
+      ),
+
