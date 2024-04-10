@@ -15,3 +15,22 @@ class _PasswordAndSecurityState extends State<PasswordAndSecurity> {
   final TextEditingController _retypeNewPasswordController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   bool _isProcessing = false;
+
+ Future<void> _changePassword() async {
+    if (_isProcessing) return;
+
+    setState(() {
+      _isProcessing = true;
+    });
+
+    String currentPassword = _currentPasswordController.text.trim();
+    String newPassword = _newPasswordController.text.trim();
+    String retypeNewPassword = _retypeNewPasswordController.text.trim();
+
+    if (newPassword != retypeNewPassword) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("New passwords do not match")));
+      setState(() {
+        _isProcessing = false;
+      });
+      return;
+    }
