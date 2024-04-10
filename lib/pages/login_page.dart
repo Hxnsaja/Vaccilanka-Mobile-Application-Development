@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vaccilanka_mobile_application_development/pages/home.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -74,7 +75,10 @@ class LoginPage extends StatelessWidget {
             //login button
             ElevatedButton(
               onPressed: () {
-                //handle
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomePage()),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 148, 186, 218),
