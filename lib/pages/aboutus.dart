@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vaccilanka_mobile_application_development/pages/home.dart';
 import 'package:vaccilanka_mobile_application_development/pages/contactus_page.dart';
 import 'package:vaccilanka_mobile_application_development/pages/userinfo.dart';
+import 'package:vaccilanka_mobile_application_development/pages/widgets/bottomnav.dart';
 
 
 
@@ -128,45 +129,7 @@ class _AboutUsState extends State<AboutUs> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              icon: Icon(Icons.home, color: _selectedIndex == 0 ? Colors.blueAccent : Colors.grey),
-              onPressed: () {
-                setState(() => _selectedIndex = 0);
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
-                      (Route<dynamic> route) => false,
-                );
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.info_outline, color: _selectedIndex == 1 ? Colors.blueAccent : Colors.grey),
-              onPressed: () {
-
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.phone, color: _selectedIndex == 2 ? Colors.blueAccent : Colors.grey),
-              onPressed: () {
-                setState(() => _selectedIndex = 2);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ContactUsPage()));
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.person, color: _selectedIndex == 3 ? Colors.blueAccent : Colors.grey),
-              onPressed: () {
-                setState(() => _selectedIndex = 3);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => UserInfoForm()));
-              },
-            ),
-          ],
-        ),
-      ),
+      bottomNavigationBar: BottomNavigation(selectedIndex: 3),
     );
   }
 }

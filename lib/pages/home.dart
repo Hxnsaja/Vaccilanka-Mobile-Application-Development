@@ -4,7 +4,8 @@ import 'package:vaccilanka_mobile_application_development/pages/contactus_page.d
 import 'package:vaccilanka_mobile_application_development/pages/userinfo.dart';
 import 'package:vaccilanka_mobile_application_development/pages/updates.dart';
 // import 'package:vaccilanka_mobile_application_development/pages/account_page.dart';
-// import 'package:vaccilanka_mobile_application_development/pages/settings_page.dart';
+import 'package:vaccilanka_mobile_application_development/pages/settings.dart';
+import 'package:vaccilanka_mobile_application_development/pages/widgets/bottomnav.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -86,19 +87,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: bottomBarColor,
-        shape: CircularNotchedRectangle(),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _buildBottomIcon(Icons.home, 0),
-            _buildBottomIcon(Icons.info_outline, 1),
-            _buildBottomIcon(Icons.phone, 2),
-            _buildBottomIcon(Icons.person, 3),
-          ],
-        ),
-      ),
+      bottomNavigationBar: BottomNavigation(selectedIndex: 0),
     );
   }
 
@@ -134,37 +123,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-    );
-  }
-
-
-  Widget _buildBottomIcon(IconData icon, int index) {
-    return IconButton(
-      icon: Icon(icon, color: _selectedIndex == index ? Colors.blueAccent : Colors.grey),
-      onPressed: () {
-        setState(() {
-          _selectedIndex = index;
-        });
-        switch (index) {
-          case 0:
-
-            Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
-            break;
-          case 1:
-
-            Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUs()));
-            break;
-          case 2:
-
-            Navigator.push(context, MaterialPageRoute(builder: (context) => ContactUsPage()));
-            break;
-          case 3:
-
-            Navigator.push(context, MaterialPageRoute(builder: (context) => UserInfoForm()));
-            break;
-
-        }
-      },
     );
   }
 

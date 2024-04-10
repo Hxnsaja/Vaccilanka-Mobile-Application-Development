@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vaccilanka_mobile_application_development/pages/widgets/bottomnav.dart';
 
 void main() {
   runApp(MyApp());
@@ -117,6 +118,7 @@ class _UserInfoFormState extends State<UserInfoForm> {
           ),
         ),
       ),
+      bottomNavigationBar: BottomNavigation(selectedIndex: 2),
     );
   }
 
