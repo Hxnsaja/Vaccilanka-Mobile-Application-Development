@@ -18,8 +18,8 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
 
-  final Color appBarColor = Color(0xFFF8F8F8);
-  final Color backgroundColor = Color(0xFFF5F5F5);
+  final Color appBarColor = Color(0xFFEBF8F9);
+  final Color backgroundColor = Color(0xFFEBF8F9);
   final Color bottomBarColor = Color(0xFFEEEEEE);
   final Color cardBackgroundColor = Colors.white;
   final Color primaryTextColor = Color(0xFF333333);
@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: Color(0xFFEBF8F9),
       appBar: AppBar(
         title: Row(
           children: [
@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
             Text('Welcome Back, Ann', style: TextStyle(color: primaryTextColor)),
           ],
         ),
-        backgroundColor: appBarColor,
+        backgroundColor: Color(0xFFEBF8F9),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/man.png'),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vaccilanka_mobile_application_development/pages/widgets/bottomnav.dart';
 
 class ContactUsPage extends StatelessWidget {
   const ContactUsPage({super.key});
@@ -106,6 +107,7 @@ class ContactUsPage extends StatelessWidget {
             ],
           ),
         ),
+        bottomNavigationBar: BottomNavigation(selectedIndex: 3),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vaccilanka_mobile_application_development/pages/widgets/bottomnav.dart';
+import 'package:vaccilanka_mobile_application_development/pages/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -53,7 +54,7 @@ class _UserInfoFormState extends State<UserInfoForm> {
           centerTitle: true,
           leading: new IconButton(
             icon: new Icon(Icons.arrow_back_ios, color: Colors.black),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => HomePage())),
           ),
           actions: [
             Padding(
