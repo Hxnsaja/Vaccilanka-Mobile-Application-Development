@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:vaccilanka_mobile_application_development/pages/aboutus.dart';
 import 'package:vaccilanka_mobile_application_development/pages/contactus_page.dart';
+import 'package:vaccilanka_mobile_application_development/pages/resources.dart';
 import 'package:vaccilanka_mobile_application_development/pages/userinfo.dart';
 import 'package:vaccilanka_mobile_application_development/pages/updates.dart';
-// import 'package:vaccilanka_mobile_application_development/pages/account_page.dart';
 import 'package:vaccilanka_mobile_application_development/pages/settings.dart';
 import 'package:vaccilanka_mobile_application_development/pages/widgets/bottomnav.dart';
 
@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatesPage()));
               break;
             case 'Educational Resources':
-              Navigator.push(context, MaterialPageRoute(builder: (context) => UpdatesPage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ResourcesPage()));
               break;
           }
         },

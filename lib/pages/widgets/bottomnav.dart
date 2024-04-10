@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:vaccilanka_mobile_application_development/pages/home.dart';
-// import 'package:vaccilanka_mobile_application_development/pages/emergency.dart';
+import 'package:vaccilanka_mobile_application_development/pages/emergency.dart';
 import 'package:vaccilanka_mobile_application_development/pages/userinfo.dart';
 import 'package:vaccilanka_mobile_application_development/pages/settings.dart';
 
 class BottomNavigation extends StatefulWidget {
   final int selectedIndex;
 
-  const BottomNavigation({Key? key, required this.selectedIndex}) : super(key: key);
+  const BottomNavigation({Key? key, required this.selectedIndex})
+      : super(key: key);
 
   @override
   _BottomNavigationState createState() => _BottomNavigationState();
@@ -18,16 +19,20 @@ class _BottomNavigationState extends State<BottomNavigation> {
     if (index != widget.selectedIndex) {
       switch (index) {
         case 0:
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => HomePage()));
+          Navigator.of(context)
+              .pushReplacement(MaterialPageRoute(builder: (_) => HomePage()));
           break;
         case 1:
-        // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => EmergencyPage()));
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (_) => EmergencyContactsPage()));
           break;
         case 2:
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => UserInfoForm()));
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (_) => UserInfoForm()));
           break;
         case 3:
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => SettingsPage()));
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (_) => SettingsPage()));
           break;
       }
     }
