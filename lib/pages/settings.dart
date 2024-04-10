@@ -47,7 +47,7 @@ class _SettingsPageState extends State<SettingsPage> {
               // Navigate to Password Manager page
             },
           ),
-          
+
           _buildSettingsItem(
             title: 'Security and Privacy',
             onTap: () {
