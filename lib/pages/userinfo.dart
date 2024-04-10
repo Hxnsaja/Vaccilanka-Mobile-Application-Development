@@ -79,12 +79,13 @@ class _UserInfoFormState extends State<UserInfoForm> {
             key: _formKey,
             child: ListView(
               children: <Widget>[
-                _buildFieldWithTitle('User ID', _userIdController),
-                _buildFieldWithTitle('Name in Full', _nameController),
+                _buildFieldWithTitle('Child ID', _userIdController),
+                _buildFieldWithTitle('First Name', _nameController),
+                _buildFieldWithTitle('Last Name', _nameController),
                 _buildFieldWithTitle('Date of Birth', _dobController),
                 _buildShortFieldWithTitle('Address', _addressController),
                 _buildFieldWithTitle('Gender', _genderController),
-                _buildFieldWithTitle('NIC Number', _nicController),
+                //_buildFieldWithTitle('NIC Number', _nicController),
                 _buildShortFieldWithTitle('Contact Number', _contactController),
                 _buildShortFieldWithTitle('Email', _emailController),
                 SizedBox(height: 20),
