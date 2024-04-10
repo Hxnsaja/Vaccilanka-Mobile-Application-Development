@@ -12,7 +12,7 @@ class VaccineHistoryPage extends StatefulWidget {
 
 class _VaccineHistoryPageState extends State<VaccineHistoryPage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  String? uid; // Changed from 'late' to nullable
+  String? uid;
   late Future<List<VaccinationRecord>> vaccinationRecords;
 
   @override
@@ -23,11 +23,10 @@ class _VaccineHistoryPageState extends State<VaccineHistoryPage> {
 
   void initVaccineHistory() {
     SessionManager sessionManager = SessionManager();
-    uid = sessionManager.userId; // Ensuring uid is nullable to handle the case where it may not be set
+    uid = sessionManager.userId;
 
     if (uid == null) {
       debugPrint('Error: User ID is null, ensure the user is logged in.');
-      // Navigate the user to the login page or show an error
     } else {
       debugPrint('User ID: $uid');
       vaccinationRecords = getVaccinationRecords(uid!);
@@ -89,7 +88,7 @@ class _VaccineHistoryPageState extends State<VaccineHistoryPage> {
             return Text('Error: ${snapshot.error}');
           } else if (snapshot.hasData) {
             return SingleChildScrollView(
-              scrollDirection: Axis.horizontal, // Make the DataTable scrollable horizontally
+              scrollDirection: Axis.horizontal,
               child: DataTable(
                 columns: const <DataColumn>[
                   DataColumn(label: Text('Date')),
