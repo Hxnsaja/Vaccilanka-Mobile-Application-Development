@@ -92,4 +92,25 @@ class _VaccineHistoryPageState extends State<VaccineHistoryPage> {
                     .toList(),
               ),
             );
+             } else {
+            return Text('No records found.');
+          }
+        },
+      ),
+      bottomNavigationBar: BottomNavigation(selectedIndex: 0),
+    );
+  }
+}
+
+class VaccinationRecord {
+  final String date;
+  final String hospitalName;
+  final String vaccineName;
+
+  VaccinationRecord({
+    required this.date,
+    required this.hospitalName,
+    required this.vaccineName,
+  });
+}
 
