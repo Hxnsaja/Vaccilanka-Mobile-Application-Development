@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vaccilanka_mobile_application_development/pages/home.dart';
-import 'package:vaccilanka_mobile_application_development/pages/contactus_page.dart';
+import 'package:vaccilanka_mobile_application_development/pages/contactus.dart';
 import 'package:vaccilanka_mobile_application_development/pages/userinfo.dart';
 import 'package:vaccilanka_mobile_application_development/pages/widgets/bottomnav.dart';
 
