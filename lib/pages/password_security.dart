@@ -68,3 +68,63 @@ class _PasswordAndSecurityState extends State<PasswordAndSecurity> {
     }
   }
 
+@override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomInset: true,
+      appBar: AppBar(
+        title: Text('Password & Security'),
+        backgroundColor: Colors.blue, 
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white), 
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          color: Color(0xFFEBF8F9), 
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              _buildPasswordField(_currentPasswordController, 'Current Password'),
+              SizedBox(height: 10),
+              _buildPasswordField(_newPasswordController, 'New Password'),
+              SizedBox(height: 10),
+              _buildPasswordField(_retypeNewPasswordController, 'Re-type New Password'),
+              SizedBox(height: 20),
+              _isProcessing
+                  ? CircularProgressIndicator()
+                  : ElevatedButton(
+                      onPressed: _changePassword,
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.lightBlueAccent, 
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+                        child: Text('Change Password'),
+                      ),
+                    ),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomNavigation(selectedIndex: 0),
+    );
+  }
+
+  Widget _buildPasswordField(TextEditingController controller, String label) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: label,
+        fillColor: Colors.white, 
+        filled: true,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.0),
+          borderSide: BorderSide(color: Colors.blue),
+        ),
+      ),
+      obscureText: true,
+    );
+  }
+}
