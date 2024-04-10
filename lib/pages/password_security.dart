@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:vaccilanka_mobile_application_development/pages/services/session_manager.dart';
 import 'package:vaccilanka_mobile_application_development/pages/widgets/bottomnav.dart';
 
 class PasswordAndSecurity extends StatefulWidget {
@@ -37,7 +38,7 @@ class _PasswordAndSecurityState extends State<PasswordAndSecurity> {
       });
       return;
     }
-
+    // SessionManager sessionManager = SessionManager();
     final String? userId = SessionManager().userId;
     if (userId == null) {
       ScaffoldMessenger.of(context)
@@ -107,7 +108,7 @@ class _PasswordAndSecurityState extends State<PasswordAndSecurity> {
                   : ElevatedButton(
                       onPressed: _changePassword,
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.lightBlueAccent,
+                        backgroundColor: Colors.lightBlueAccent,
                       ),
                       child: Padding(
                         padding: EdgeInsets.symmetric(
