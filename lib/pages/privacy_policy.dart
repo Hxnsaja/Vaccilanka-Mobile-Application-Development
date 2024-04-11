@@ -91,6 +91,28 @@ class PrivacyPolicyPage extends StatelessWidget {
                   TextSpan(
                       text: 'Changes to This Privacy Policy\n',
                       style: TextStyle(fontWeight: FontWeight.bold, height: 2)),
+                  TextSpan(
+                      text:
+                          'Our system developers have the discretion to update this privacy policy at any time. When we do, we will revise the updated date at the bottom of this page. We encourage Users to frequently check this page for any changes to stay informed about how we are helping to protect the personal information we collect. You acknowledge and agree that it is your responsibility to review this privacy policy periodically and become aware of modifications.\n\n',
+                      style: TextStyle(height: 1.5)),
+                  TextSpan(
+                      text: 'Your Acceptance of These Terms\n',
+                      style: TextStyle(fontWeight: FontWeight.bold, height: 2)),
+                  TextSpan(
+                      text:
+                          'By using this Site, you signify your acceptance of this policy. If you do not agree.\n\n',
+                      style: TextStyle(height: 1.5)),
+                ],
+              ),
+              style: TextStyle(fontSize: 16, color: Colors.black87),
+            ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomNavigation(selectedIndex: 0),
+    );
+  }
+}
 
 
 
