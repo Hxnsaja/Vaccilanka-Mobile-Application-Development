@@ -68,5 +68,35 @@ class ResourcesPage extends StatelessWidget {
               ),
             ),
           ],
+           ),
+      ),
+    );
+  }
+
+  void navigateToArticlePage(BuildContext context, String articleTitle) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ArticlePage(title: articleTitle)),
+    );
+  }
+}
+
+class ArticlePage extends StatelessWidget {
+  final String title;
+
+  ArticlePage({required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: Center(
+        child: Text('Content of the article "$title" goes here.'),
+      ),
+    );
+  }
+}
 
 
