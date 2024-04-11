@@ -70,5 +70,18 @@ class _UserInfoFormState extends State<UserInfoForm> {
                 buildFieldWithTitle('Gender', _userInfoController.genderController),
                 buildFieldWithTitle('Contact Number', _userInfoController.phoneNumberController),
                 buildFieldWithTitle('Email', _userInfoController.emailController),
-                
-                   
+                SizedBox(height: 20),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+
+                      _userInfoController.updateUserInformation(); 
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue.shade100,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14.0),
+                      ),
+                    ),
