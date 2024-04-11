@@ -18,7 +18,8 @@ class ResourcesPage extends StatelessWidget {
       bottomNavigationBar: BottomNavigation(selectedIndex: 0),
     );
   }
-    Widget buildArticleList(BuildContext context) {
+
+  Widget buildArticleList(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
       stream: _firestore.collection('education').snapshots(),
       builder: (context, snapshot) {
@@ -38,7 +39,9 @@ class ResourcesPage extends StatelessWidget {
       },
     );
   }
-   Widget buildArticleCard(BuildContext context, String imagePath, String overlayText) {
+
+  Widget buildArticleCard(
+      BuildContext context, String imagePath, String overlayText) {
     // This function creates a card for an article
     return GestureDetector(
       onTap: () => navigateToArticlePage(context, overlayText),
@@ -68,7 +71,7 @@ class ResourcesPage extends StatelessWidget {
               ),
             ),
           ],
-           ),
+        ),
       ),
     );
   }
@@ -94,9 +97,7 @@ class ArticlePage extends StatelessWidget {
       ),
       body: Center(
         child: Text('Content of the article "$title" goes here.'),
-      ),
-    );
-  }
+      ),
+    );
+  }
 }
-
-

@@ -14,11 +14,11 @@ class PrivacyPolicyPage extends StatelessWidget {
           icon: Icon(Icons.arrow_back, color: primaryColor),
           onPressed: () => Navigator.pop(context),
         ),
-         title: Text('Privacy Policy', style: TextStyle(color: primaryColor)),
+        title: Text('Privacy Policy', style: TextStyle(color: primaryColor)),
         centerTitle: true,
         elevation: 0,
       ),
-       backgroundColor: backgroundColor,
+      backgroundColor: backgroundColor,
       body: Scrollbar(
         thumbVisibility: true,
         thickness: 6.0,
@@ -43,7 +43,6 @@ class PrivacyPolicyPage extends StatelessWidget {
                       text:
                           'We may collect personal identification information from Users in various ways, including but not limited to when Users visit our Site, register on the Site, place an order, subscribe to the newsletter, respond to a survey, fill out a form, and in connection with other activities, services, features, or resources we make available on our Site. Users may be asked for, as appropriate, name, email address, mailing address, phone number, and other relevant information. We will collect personal identification information from Users only if they voluntarily submit such information to us. Users can always refuse to supply personal identification information, except if it may prevent them from engaging in certain Site-related activities.\n\n',
                       style: TextStyle(height: 1.5)),
-                       style: TextStyle(height: 1.5)),
                   TextSpan(
                       text: 'Non-personal Identification Information\n',
                       style: TextStyle(fontWeight: FontWeight.bold)),
@@ -69,7 +68,7 @@ class PrivacyPolicyPage extends StatelessWidget {
                   TextSpan(
                       text:
                           '- To improve our Site: We may use feedback you provide to improve our products and services.\n',
- style: TextStyle(height: 1.5)),
+                      style: TextStyle(height: 1.5)),
                   TextSpan(
                       text:
                           '- To send periodic emails: We may use the email address to send User information and updates pertaining to their order. It may also be used to respond to their inquiries, questions, and/or other requests. If a User decides to opt-in to our mailing list, they will receive emails that may include company news, updates, related product, or service information, etc. If at any time the User would like to unsubscribe from receiving future emails, we include detailed unsubscribe instructions at the bottom of each email.\n\n',
@@ -110,9 +109,6 @@ class PrivacyPolicyPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigation(selectedIndex: 0),
-    );
-  }
+    );
+  }
 }
-
-
-
