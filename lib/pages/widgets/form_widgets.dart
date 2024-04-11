@@ -104,3 +104,14 @@ Widget buildShortFieldWithTitle(String title, TextEditingController controller, 
                 backgroundColor: Color(0xFF94C5FF),
                 shape: RoundedRectangleBorder(
                   borderRadius: 
+                  BorderRadius.circular(14.0),
+                ),
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text(
+                  'Change',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
