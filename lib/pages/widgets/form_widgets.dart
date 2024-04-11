@@ -1,73 +1,144 @@
+// form_widgets.dart
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vaccilanka_mobile_application_development/pages/services/session_manager.dart';
 
-class UserInfoController {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  late final SessionManager _sessionManager;
-  late final TextEditingController childIdController;
-  late final TextEditingController firstNameController;
-  late final TextEditingController lastNameController;
-  late final TextEditingController dobController;
-  late final TextEditingController guardianNameController;
-  late final TextEditingController guardianAddressController;
-  late final TextEditingController genderController;
-  late final TextEditingController phoneNumberController;
-  late final TextEditingController emailController;
+Widget buildFieldWithTitle(String title, TextEditingController controller) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Padding(
+        padding: EdgeInsets.symmetric(vertical: 8.0),
+        child: Text(
+          title,
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.w600,
+            fontStyle: FontStyle.italic,
+          ),
+        ),
+      ),
+      Padding(
+        padding: EdgeInsets.only(bottom: 8.0),
+        child: TextFormField(
+          controller: controller,
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(
+                color: Colors.blue,
+                width: 1.0,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(
+                color: Colors.blue,
+                width: 1.0,
+              ),
+            ),
+            hintText: 'Enter $title',
+            hintStyle: TextStyle(
+              fontStyle: FontStyle.italic,
+              fontWeight: FontWeight.w600,
+              color: Colors.grey[400],
+            ),
+            contentPadding:
+                EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
+          ),
+          validator: (value) {
+            if (value!.isEmpty) {
+              return 'Please enter $title';
+            }
+            return null;
+          },
+        ),
+      ),
+    ],
+  );
+}
 
-  UserInfoController() {
-    _sessionManager = SessionManager();
-    childIdController = TextEditingController();
-    firstNameController = TextEditingController();
-    lastNameController = TextEditingController();
-    dobController = TextEditingController();
-    guardianNameController = TextEditingController();
-    guardianAddressController = TextEditingController();
-    genderController = TextEditingController();
-    phoneNumberController = TextEditingController();
-    emailController = TextEditingController();
-  }
-
-  Future<void> loadUserData() async {
-    String uid = _sessionManager.getUserId();
-    QuerySnapshot userSnapshot = await _firestore
-        .collection('child')
-        .where('uid', isEqualTo: uid)
-        .get();
-    
-    if (userSnapshot.docs.isNotEmpty) {
-      Map<String, dynamic> userData = userSnapshot.docs.first.data() as Map<String, dynamic>;
-      
-      childIdController.text = userData['child_id'] ?? '';
-      firstNameController.text = userData['firstname'] ?? '';
-      lastNameController.text = userData['lastname'] ?? ''; 
-      dobController.text = userData['dob'] ?? '';
-      guardianNameController.text = userData['guardian_name'] ?? ''; 
-      guardianAddressController.text = userData['guardian_address'] ?? '';
-      genderController.text = userData['gender'] ?? '';
-      phoneNumberController.text = userData['phone_number'] ?? '';
-      emailController.text = userData['email'] ?? '';
-    }
-  }
-
-  Future<void> updateUserInformation() async {
-    String uid = _sessionManager.getUserId();
-    DocumentReference userDoc = _firestore
-        .collection('child')
-        .where('uid', isEqualTo: uid)
-        .get()
-        .then((snapshot) => snapshot.docs.first.reference); 
-
-    return await userDoc.update({
-      'child_id': childIdController.text,
-      'firstname': firstNameController.text,
-      'lastname': lastNameController.text, 
-      'dob': dobController.text,
-      'guardian_name': guardianNameController.text,
-      'guardian_address': guardianAddressController.text,
-      'gender': genderController.text,
-      'phone_number': phoneNumberController.text,
-      'email': emailController.text,
-    });
-  }
+Widget buildShortFieldWithTitle(String title, TextEditingController controller,
+    VoidCallback onChangePressed) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Padding(
+        padding: EdgeInsets.symmetric(vertical: 8.0),
+        child: Text(
+          title,
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.w600,
+            fontStyle: FontStyle.italic,
+          ),
+        ),
+      ),
+      Padding(
+        padding: EdgeInsets.only(bottom: 8.0),
+        child: Row(
+          children: [
+            Expanded(
+              child: TextFormField(
+                controller: controller,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 1.0,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 1.0,
+                    ),
+                  ),
+                  hintText: 'Enter $title',
+                  hintStyle: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.grey[400],
+                  ),
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter $title';
+                  }
+                  return null;
+                },
+              ),
+            ),
+            SizedBox(width: 10),
+            ElevatedButton(
+              onPressed: onChangePressed,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFF94C5FF),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14.0),
+                ),
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text(
+                  'Change',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ],
+  );
 }
