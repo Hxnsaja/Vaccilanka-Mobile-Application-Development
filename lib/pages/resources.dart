@@ -38,4 +38,35 @@ class ResourcesPage extends StatelessWidget {
       },
     );
   }
+   Widget buildArticleCard(BuildContext context, String imagePath, String overlayText) {
+    // This function creates a card for an article
+    return GestureDetector(
+      onTap: () => navigateToArticlePage(context, overlayText),
+      child: Card(
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          children: <Widget>[
+            Image.asset(
+              imagePath,
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: 200.0,
+            ),
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(vertical: 10.0),
+              color: Colors.black.withOpacity(0.5),
+              child: Text(
+                overlayText,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+
 
