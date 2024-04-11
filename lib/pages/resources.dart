@@ -18,3 +18,24 @@ class ResourcesPage extends StatelessWidget {
       bottomNavigationBar: BottomNavigation(selectedIndex: 0),
     );
   }
+    Widget buildArticleList(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: _firestore.collection('education').snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator());
+        }
+        if (!snapshot.hasData) {
+          return Center(child: Text("No Educational Resources found."));
+        }
+
+        return ListView(
+          children: snapshot.data!.docs.map((document) {
+            Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+            return buildArticleCard(context, data['image'], data['title']);
+          }).toList(),
+        );
+      },
+    );
+  }
+
