@@ -4,3 +4,10 @@ import 'package:vaccilanka_mobile_application_development/pages/widgets/bottomna
 import 'package:vaccilanka_mobile_application_development/pages/home.dart';
 import 'package:vaccilanka_mobile_application_development/pages/widgets/userinfocontroller.dart';
 import 'package:vaccilanka_mobile_application_development/pages/widgets/form_widgets.dart';
+
+class UserInfoForm extends StatefulWidget {
+  @override
+  _UserInfoFormState createState() => _UserInfoFormState();
+}
+
+
