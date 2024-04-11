@@ -10,4 +10,14 @@ class UserInfoForm extends StatefulWidget {
   _UserInfoFormState createState() => _UserInfoFormState();
 }
 
+class _UserInfoFormState extends State<UserInfoForm> {
+  final _formKey = GlobalKey<FormState>();
+  final UserInfoController _userInfoController = UserInfoController(); 
 
+ @override
+  void initState() {
+    super.initState();
+    _userInfoController.loadUserData(); 
+  }
+  
+   
