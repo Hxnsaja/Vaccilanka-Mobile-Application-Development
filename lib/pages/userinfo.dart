@@ -53,3 +53,22 @@ class _UserInfoFormState extends State<UserInfoForm> {
           ),
         ],
       ),
+
+    body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: <Widget>[
+                buildFieldWithTitle('Child ID', _userInfoController.childIdController),
+                buildFieldWithTitle('First Name', _userInfoController.firstNameController),
+                buildFieldWithTitle('Last Name', _userInfoController.lastNameController),
+                buildFieldWithTitle('Date of Birth', _userInfoController.dobController),
+                buildFieldWithTitle('Guardian Name', _userInfoController.guardianNameController),
+                buildFieldWithTitle('Address', _userInfoController.guardianAddressController),
+                buildFieldWithTitle('Gender', _userInfoController.genderController),
+                buildFieldWithTitle('Contact Number', _userInfoController.phoneNumberController),
+                buildFieldWithTitle('Email', _userInfoController.emailController),
+                
+                   
