@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:vaccilanka_mobile_application_development/pages/aboutus.dart';
 import 'package:vaccilanka_mobile_application_development/pages/contactus.dart';
-import 'package:vaccilanka_mobile_application_development/pages/userinfo.dart';
-import 'package:vaccilanka_mobile_application_development/pages/updates.dart';
+import 'package:vaccilanka_mobile_application_development/pages/password_security.dart';
+import 'package:vaccilanka_mobile_application_development/pages/privacy_policy.dart';
 import 'package:vaccilanka_mobile_application_development/pages/home.dart';
+import 'package:vaccilanka_mobile_application_development/pages/services/session_manager.dart';
 import 'package:vaccilanka_mobile_application_development/pages/widgets/bottomnav.dart';
-
+import 'package:vaccilanka_mobile_application_development/pages/aboutus.dart';
+import 'package:vaccilanka_mobile_application_development/pages/login_page.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -44,20 +45,27 @@ class _SettingsPageState extends State<SettingsPage> {
           _buildSettingsItem(
             title: 'Password Manager',
             onTap: () {
-              // Navigate to Password Manager page
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PasswordAndSecurity()));
             },
           ),
 
           _buildSettingsItem(
             title: 'Security and Privacy',
             onTap: () {
-              // Navigate to Security and Privacy page
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PrivacyPolicyPage()));
+            },
+          ),
+          _buildSettingsItem(
+            title: 'About Us',
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUs()));
             },
           ),
           _buildSettingsItem(
             title: 'Logout',
             onTap: () {
-              // Handle logout
+              SessionManager().clear();
+              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => LoginPage()), (Route<dynamic> route) => false);
             },
           ),
         ],
