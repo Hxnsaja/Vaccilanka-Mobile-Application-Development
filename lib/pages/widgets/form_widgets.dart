@@ -16,7 +16,7 @@ Widget buildFieldWithTitle(String title, TextEditingController controller) {
           ),
         ),
       ),
-Padding(
+      Padding(
         padding: EdgeInsets.only(bottom: 8.0),
         child: TextFormField(
           controller: controller,
@@ -30,7 +30,7 @@ Padding(
                 width: 1.0,
               ),
             ),
- focusedBorder: OutlineInputBorder(
+            focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
               borderSide: BorderSide(
                 color: Colors.blue,
@@ -43,7 +43,6 @@ Padding(
               fontWeight: FontWeight.w600,
               color: Colors.grey[400],
             ),
-
             contentPadding:
                 EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
           ),
@@ -57,8 +56,10 @@ Padding(
       ),
     ],
   );
-}  
-Widget buildShortFieldWithTitle(String title, TextEditingController controller, VoidCallback onChangePressed) {
+}
+
+Widget buildShortFieldWithTitle(String title, TextEditingController controller,
+    VoidCallback onChangePressed) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -73,8 +74,24 @@ Widget buildShortFieldWithTitle(String title, TextEditingController controller, 
           ),
         ),
       ),
-
-      focusedBorder: OutlineInputBorder(
+      Padding(
+        padding: EdgeInsets.only(bottom: 8.0),
+        child: Row(
+          children: [
+            Expanded(
+              child: TextFormField(
+                controller: controller,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 1.0,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     borderSide: BorderSide(
                       color: Colors.blue,
@@ -87,7 +104,8 @@ Widget buildShortFieldWithTitle(String title, TextEditingController controller, 
                     fontWeight: FontWeight.w600,
                     color: Colors.grey[400],
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -103,8 +121,7 @@ Widget buildShortFieldWithTitle(String title, TextEditingController controller, 
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF94C5FF),
                 shape: RoundedRectangleBorder(
-                  borderRadius: 
-                  BorderRadius.circular(14.0),
+                  borderRadius: BorderRadius.circular(14.0),
                 ),
               ),
               child: Padding(
@@ -115,7 +132,6 @@ Widget buildShortFieldWithTitle(String title, TextEditingController controller, 
                     fontSize: 16.0,
                     fontWeight: FontWeight.w600,
                     color: Colors.black,
-
                   ),
                 ),
               ),
