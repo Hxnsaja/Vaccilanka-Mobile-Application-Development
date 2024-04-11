@@ -85,3 +85,27 @@ class _UserInfoFormState extends State<UserInfoForm> {
                         borderRadius: BorderRadius.circular(14.0),
                       ),
                     ),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Text(
+                        'SUBMIT',
+                        style: TextStyle(
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomNavigation(selectedIndex: 2),
+    );
+  }
+
+
+
