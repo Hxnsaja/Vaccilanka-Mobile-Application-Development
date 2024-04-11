@@ -19,5 +19,18 @@ class _UserInfoFormState extends State<UserInfoForm> {
     super.initState();
     _userInfoController.loadUserData(); 
   }
-  
-   
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'User Information',
+          style: TextStyle(
+            fontSize: 22.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
+        
+         
