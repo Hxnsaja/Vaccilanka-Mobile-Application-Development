@@ -107,5 +107,18 @@ class _UserInfoFormState extends State<UserInfoForm> {
     );
   }
 
-
+  @override
+  void dispose() {
+    _userInfoController.childIdController.dispose();
+    _userInfoController.firstNameController.dispose();
+    _userInfoController.lastNameController.dispose();
+    _userInfoController.dobController.dispose();
+    _userInfoController.guardianNameController.dispose();
+    _userInfoController.guardianAddressController.dispose();
+    _userInfoController.genderController.dispose();
+    _userInfoController.phoneNumberController.dispose();
+    _userInfoController.emailController.dispose();
+    super.dispose();
+  }
+}
 
